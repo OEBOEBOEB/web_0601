@@ -1,5 +1,5 @@
 window.onscroll = () => {
-    if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+    if (document.body.scrollTop > 150 || document.documentElement.scrollTop > 150) {
         document.getElementById('js-go-top').style.display = 'block';
     } else {
         document.getElementById('js-go-top').style.display = 'none';
@@ -72,7 +72,7 @@ xhr.onload = function(){
         list.appendChild(li);
         li.innerHTML =  `
             <li class="content__item">
-                <div class="item__cover flex-row style="background: url('${data.result.records[i].Picture1}') no-repeat center; background-size: cover;"">
+                <div class="item__cover flex-row" style="background: url('${data.result.records[i].Picture1}') no-repeat center; background-size: cover;">
                     <div class="item__title flex-row">
                         <h3>${data.result.records[i].Name}</h3>
                         <h4>${data.result.records[i].Zone}</h4>
