@@ -1,3 +1,12 @@
+setTimeout(function() {
+    document.getElementById('js-loading').style.opacity = '0';
+    document.body.style.overflow = 'visible';
+},2500);
+
+setTimeout(function() {
+    document.getElementById('js-loading').style.display = 'none';
+},3000);
+
 window.onscroll = () => {
     if (document.body.scrollTop > 150 || document.documentElement.scrollTop > 150) {
         document.getElementById('js-go-top').style.display = 'block';
@@ -32,7 +41,7 @@ xhr.onload = function(){
     option.text = '- - 請選擇行政區 - -';
     district.add(option);
     
-    for(var i=0; i < data.result.records.length; i++){
+    for(var i = 0; i < data.result.records.length; i++){
         var zoneContent = data.result.records[i].Zone;
         if(!zoneTotal[zoneContent]){
         zoneTotal[zoneContent] = 1;
@@ -71,7 +80,7 @@ xhr.onload = function(){
         li = document.createElement('li');
         list.appendChild(li);
         li.innerHTML =  `
-            <li class="content__item">
+            <li class="content__item js-open-item" id="${data.result.records[i].Id}">
                 <div class="item__cover flex-row" style="background: url('${data.result.records[i].Picture1}') no-repeat center; background-size: cover;">
                     <div class="item__title flex-row">
                         <h3>${data.result.records[i].Name}</h3>
@@ -349,5 +358,6 @@ xhr.onload = function(){
             }
         }
     })
-}
 
+    
+}

@@ -61,6 +61,7 @@ body {
 	display: flex;
 	flex-direction: column;
 	min-height: 100%;
+	overflow: hidden;
 }
 
 a {
@@ -350,4 +351,82 @@ footer {
 	right: 380px;
 	cursor: pointer;
 	display: none;
+}
+
+.loading-page {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	z-index: 99;
+	background: #8c96cb;
+	width: 100%;
+	height: 100%;
+	transition: .5s ease-in-out;
+	background: url('https://upload.wikimedia.org/wikipedia/commons/4/40/Love_River_2015.JPG') no-repeat 0 75%;
+}
+
+.loading-page__text {
+	color: #fff;
+	font-family: 'Microsoft JhengHei';
+	font-size: 4.5rem;
+	font-weight: 700;
+	animation: animate .5s linear infinite;
+}
+
+.loading-page__text--spacing {
+	letter-spacing: .5rem;
+}
+
+.lightbox {
+	position: absolute;
+	width: 100%;
+	height: 100vh;
+	background: rgba(0, 0, 0, .7);
+	z-index: 98;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	display: none;
+}
+
+.lightbox-el > img {
+	
+}
+
+.lightbox__btn {
+	font-family: 'Material Icons';
+	font-size: 3rem;
+	color: #d6d6d6;
+	position: absolute;
+	right: 0;
+	top: 0;
+	background: transparent;
+	border: none;
+	outline: none;
+}
+
+.lightbox__btn:hover {
+	transition: .4s;
+	transform: rotate(360deg);
+	color: #fff;
+}
+
+@keyframes animate {
+	0%, 100% {
+		text-shadow: -2px -2px 0 #0fff, 2px 2px 0 #f00;
+	}
+	25% {
+		text-shadow: 2px 2px 0 #0fff, -2px -2px 0 #f00;
+	}
+	50% {
+		text-shadow: 2px -2px 0 #0fff, -2px 2px 0 #f00;
+	}
+	75% {
+		text-shadow: -2px 2px 0 #0fff, 2px -2px 0 #f00;
+	}
 }
