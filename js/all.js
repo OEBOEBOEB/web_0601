@@ -5,7 +5,7 @@ setTimeout(function() {
 
 setTimeout(function() {
     document.getElementById('js-loading').style.display = 'none';
-},100);
+},3000);
 
 window.onscroll = () => {
     if (document.body.scrollTop > 150 || document.documentElement.scrollTop > 150) {
