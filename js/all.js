@@ -5,7 +5,7 @@ setTimeout(function() {
 
 setTimeout(function() {
     document.getElementById('js-loading').style.display = 'none';
-},3000);
+},100);
 
 window.onscroll = () => {
     if (document.body.scrollTop > 150 || document.documentElement.scrollTop > 150) {
@@ -80,7 +80,7 @@ xhr.onload = function(){
         li = document.createElement('li');
         list.appendChild(li);
         li.innerHTML =  `
-            <li class="content__item js-open-item" id="${data.result.records[i].Id}">
+            <li class="content__item" id="${data.result.records[i].Id}">
                 <div class="item__cover flex-row" style="background: url('${data.result.records[i].Picture1}') no-repeat center; background-size: cover;">
                     <div class="item__title flex-row">
                         <h3>${data.result.records[i].Name}</h3>
@@ -121,7 +121,7 @@ xhr.onload = function(){
                 li = document.createElement('li');
                 list.appendChild(li);
                 li.innerHTML =  `
-                    <li class="content__item">
+                    <li class="content__item" id="${data.result.records[i].Id}">
                         <div class="item__cover flex-row" style="background: url('${data.result.records[i].Picture1}') no-repeat center; background-size: cover;">
                             <div class="item__title flex-row">
                                 <h3>${data.result.records[i].Name}</h3>
@@ -155,7 +155,7 @@ xhr.onload = function(){
                 li = document.createElement('li');
                 list.appendChild(li);
                 li.innerHTML =  `
-                    <li class="content__item">
+                    <li class="content__item" id="${data.result.records[i].Id}">
                         <div class="item__cover flex-row" style="background: url('${data.result.records[i].Picture1}') no-repeat center; background-size: cover;">
                             <div class="item__title flex-row">
                                 <h3>${data.result.records[i].Name}</h3>
@@ -203,7 +203,7 @@ xhr.onload = function(){
                 li = document.createElement('li');
                 list.appendChild(li);
                 li.innerHTML =  `
-                    <li class="content__item">
+                    <li class="content__item" id="${data.result.records[i].Id}">
                         <div class="item__cover flex-row" style="background: url('${data.result.records[i].Picture1}') no-repeat center; background-size: cover;">
                             <div class="item__title flex-row">
                                 <h3>${data.result.records[i].Name}</h3>
@@ -244,7 +244,7 @@ xhr.onload = function(){
                 li = document.createElement('li');
                 list.appendChild(li);
                 li.innerHTML =  `
-                    <li class="content__item">
+                    <li class="content__item" id="${data.result.records[i].Id}">
                         <div class="item__cover flex-row" style="background: url('${data.result.records[i].Picture1}') no-repeat center; background-size: cover;">
                             <div class="item__title flex-row">
                                 <h3>${data.result.records[i].Name}</h3>
@@ -285,7 +285,7 @@ xhr.onload = function(){
                 li = document.createElement('li');
                 list.appendChild(li);
                 li.innerHTML =  `
-                    <li class="content__item">
+                    <li class="content__item" id="${data.result.records[i].Id}">
                         <div class="item__cover flex-row" style="background: url('${data.result.records[i].Picture1}') no-repeat center; background-size: cover;">
                             <div class="item__title flex-row">
                                 <h3>${data.result.records[i].Name}</h3>
@@ -326,7 +326,7 @@ xhr.onload = function(){
                 li = document.createElement('li');
                 list.appendChild(li);
                 li.innerHTML =  `
-                    <li class="content__item">
+                    <li class="content__item" id="${data.result.records[i].Id}">
                         <div class="item__cover flex-row" style="background: url('${data.result.records[i].Picture1}') no-repeat center; background-size: cover;">
                             <div class="item__title flex-row">
                                 <h3>${data.result.records[i].Name}</h3>
@@ -359,5 +359,26 @@ xhr.onload = function(){
         }
     })
 
-    
+    var showDetail = document.querySelector('.content__list');
+    showDetail.addEventListener('click', function(e){
+        for (var n = 0; n < e.path.length; n++){
+            if(e.path[n].className === 'content__item'){
+                for(var i = 0; i < data.result.records.length; i++){
+                    if(data.result.records[i].Id === e.path[n].id){
+                        var modal = document.querySelector('.lightbox');
+                        modal.style.display = 'flex';
+                        modal.innerHTML = `
+                            <img src="${data.result.records[i].Picture1}" alt="">
+                            <input type="button" value="&#Xe5cd" class="lightbox__btn js-close-lightbox">
+                        `;
+                        var closeModal = document.querySelector('.js-close-lightbox');
+                        closeModal.addEventListener('click', function(){
+                            modal.style.display = 'none';
+                        });
+                    }
+                }
+            }
+        }
+        console.log(e)
+    });
 }
